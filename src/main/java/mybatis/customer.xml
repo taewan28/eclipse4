@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+ <mapper namespace="tblcustom">
+  <!-- 리턴타입이 List 일때에는 제너릭타입만 설정하면 됩니다. -->
+     <select id="selectAll" resultType="CustomerDto">
+        SELECT * FROM TBL_CUSTOM ORDER BY REG_DATE DESC
+     </select>
+     
+     <insert id="insert" parameterType="CustomerDto">
+        INSERT INTO TBL_CUSTOM
+           VALUES(#{customId},#{name},#{email},#{age},sysdate)
+     </insert>
+     
+     <update id="update" parameterType="CustomerDto">
+        UPDATE TBL_CUSTOM
+           SET EMAIL = #{email}, AGE = #{age}
+           WHERE CUSTOM_ID = #{customId}
+     </update>
+     
+     <delete id="delete" parameterType="String">
+        DELETE FROM TBL_CUSTOM
+           WHERE CUSTOM_ID = #{customId}
+     </delete>
+     
+     <select id="getCustomer" resultType="CustomerDto" parameterType="String">
+        SELECT * FROM TBL_CUSTOM 
+        	 WHERE CUSTOM_ID = #{customId}
+     </select>
+     
+  </mapper>
