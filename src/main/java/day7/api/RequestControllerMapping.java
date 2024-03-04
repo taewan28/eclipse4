@@ -11,6 +11,10 @@ public class RequestControllerMapping {
 	
 	private static final Map<RequestMap,Controller> mapping = new HashMap<>();
 	public static void init() {
+		//기존 동기 통신 컨트롤러
+		mapping.put(new RequestMap("/products", "GET"), new ProductsController());
+		
+		//비동기 통신을 위한 api 제공 컨트롤러
 		mapping.put(new RequestMap("/api/customer/list", "GET"), new ApiCustomerListController());
 		mapping.put(new RequestMap("/api/customer", "POST"), new ApiCustomerPostController());
 		mapping.put(new RequestMap("/api/customer", "GET"), new ApiCustomerGetController());

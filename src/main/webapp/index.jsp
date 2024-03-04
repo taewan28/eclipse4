@@ -22,7 +22,9 @@
 		<!-- <li><a href="api/customer/hongGD">고객ID 중복검사</a> -->
 		<li><a href="api/product/list">모든 상품 조회</a>
 	</ul>
-	
-	
+	<hr>
+	<h3>상품 관리</h3>
+	<p>상품 등록, 검색, 수정 등을 비동기 통신을 이용하여 하나의 페이지에서 해보는 예제</p>
+	<h4><a href="products">상품관리</a></h4>
 </body>
 </html>
