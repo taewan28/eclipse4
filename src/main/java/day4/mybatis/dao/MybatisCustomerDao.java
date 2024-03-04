@@ -45,12 +45,19 @@ public class MybatisCustomerDao {
 	      return result;
 	   }
 	   
-	   public List<CustomerDto> getCustomer(String customid){
+	  /* public List<CustomerDto> getCustomer(String customid){
 			SqlSession sqlSession = sessionFactory.openSession();
 			List<CustomerDto> list = sqlSession.selectList("tblcustom.getCustomer",customid);
 			sqlSession.close();
 			return list;
-		   }
+		   }*/
+	   
+	   public CustomerDto getCustomer(String customid)	{
+		   SqlSession sqlSession = sessionFactory.openSession();
+		   CustomerDto dto = sqlSession.selectOne("tblcustom.getCustomer",customid);
+		   sqlSession.close();
+		   return dto;
+	   }
 	   
 
 }

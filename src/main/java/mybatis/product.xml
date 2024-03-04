@@ -44,47 +44,7 @@
      <select id="Allselect" resultType="ProductDto" parameterType="java.util.Map">
      	SELECT * FROM TBL_PRODUCT
      </select>
-     
-     	<!--  동적쿼리 예시 : 상품 조회에 필요한 검색필터. 아래 4개 중 하나의 쿼리로 실행되게 할 수 있습니다
-     					  동적쿼리를 위해서 where, if, 		
-     	 -->
-     	<!-- 
-	     	SELECT * from TBL_PRODUCT 
-			where category = 'B2' and pname like '%'||'사과'||'%'; => 파라미터 2개 모두 있을때
-			
-     		SELECT * from TBL_PRODUCT 
-     		where category = 'B2'; => keyword 파라미터가 없을 떄
-     								또는
-			SELECT * from TBL_PRODUCT 
-			where pname like '%'||'사과'||'%';  => category 파라미터가 없을 때
-									또는
-			select * from TBL_PRODUCT		=> 파라미터 2개 모두 없을 때
-			-->
-			<!-- 아래 if 의 test 값은 조건식 입니다. keyword 파라미터값이 null 이 아닐떄  -->
-     	<!-- 아래 if 의 test 값은 조건식 입니다. keyword 파라미터값이 null 이 아닐떄  -->
-      <select id="search" resultType="ProductDto" parameterType="java.util.Map">
-        select * from tbl_product
-        <!-- if중의 하나라도 조건식이 만들어 질때만 where 작성 -->
-        <where>
-           <if test = "keyword!=null">
-              pname like '%' || #{keyword}||'%'
-           </if>
-           <!-- category 파라미터값이 null이 아닐때. -->
-           <if test="category!=null">
-              <!-- 필요한 경우에만 and 추가 앞의 조건식이 없으 면 제거됩니다. -->
-              <trim prefix="and">
-                 category = #{category}
-              </trim>
-           </if>
-           <if test="from!=null and to!=null">
-              <trim prefix="and">
-                 price between #{from} and #{to}
-              </trim>
-           </if>
-        </where>
-     </select>
-     
-     
+  
      <insert id="insert" parameterType="ProductDto">
         INSERT INTO TBL_PRODUCT
            VALUES(#{pcode},#{category},#{pname},#{price})

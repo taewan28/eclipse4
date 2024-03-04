@@ -52,7 +52,7 @@ public class MybatisSessionTest {
 		List<CustomerDto> list1 = dao.selectAll();
 		System.out.println(list1);
 
-		System.out.println("====== insert 테스트 =====");
+		/*System.out.println("====== insert 테스트 =====");
 		int result1 = dao.insert(new CustomerDto("tae1212", "김태완", "twk0223@gmail.com", 40, null));
 		System.out.println("반영된 행 개수 : " + result1);
 
@@ -66,7 +66,7 @@ public class MybatisSessionTest {
 		
 		System.out.println("====== getCustomer 테스트 =====");
 		List<CustomerDto> list2 = dao.getCustomer("mina012");
-		System.out.println(list2);
+		System.out.println(list2);*/
 		
 	}
 	
