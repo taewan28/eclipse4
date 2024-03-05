@@ -13,6 +13,7 @@ public class RequestControllerMapping {
 	public static void init() {
 		//기존 동기 통신 컨트롤러
 		mapping.put(new RequestMap("/products", "GET"), new ProductsController());
+		mapping.put(new RequestMap("/buys", "GET"), new BuysController());
 		
 		//비동기 통신을 위한 api 제공 컨트롤러
 		mapping.put(new RequestMap("/api/customer/list", "GET"), new ApiCustomerListController());
@@ -20,6 +21,9 @@ public class RequestControllerMapping {
 		mapping.put(new RequestMap("/api/customer", "GET"), new ApiCustomerGetController());
 		mapping.put(new RequestMap("/api/product/list", "GET"), new ApiProductListController());
 		mapping.put(new RequestMap("/api/product", "POST"), new ApiProductPostController());
+		mapping.put(new RequestMap("/api/buy/list", "GET"), new ApiBuyListController());
+		//상품 검색
+		mapping.put(new RequestMap("/api/product", "PUT"), new ApiProductSearchController());
 	}
 	
 	public static Controller getController(RequestMap key) {

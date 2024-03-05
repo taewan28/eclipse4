@@ -78,9 +78,9 @@ public class MybatisSessionTest {
 		List<BuyDto> list = dao.selectAll();
 		System.out.println(list);
 
-		System.out.println("====== insert 테스트 =====");
+		/*System.out.println("====== insert 테스트 =====");
 		int result1 = dao.insert(new BuyDto(0, "mina012", "CJBAb12g", 4, null));
-		System.out.println("반영된 행 개수 : " + result1);
+		System.out.println("반영된 행 개수 : " + result1);*/
 
 		System.out.println("====== delete 테스트 =======");
 		int result2 = dao.delete(1044);

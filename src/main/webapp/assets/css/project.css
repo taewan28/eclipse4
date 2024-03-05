@@ -3,7 +3,6 @@
 * {
     box-sizing: border-box; margin : 0; padding : 0;
 }
-
 body {
     padding : 1rem;
 }
@@ -11,7 +10,7 @@ body {
 
 h3 { padding : 1rem;}
 
-ul { list-style: none; width : 57rem;}
+ul { list-style: none; width : 65rem;}
 
 /* forEach 안에 있는 ul의 class 이름이 row 입니다. */
 ul .row {display : flex;}
@@ -28,3 +27,4 @@ ul .row > li {
 
 /* 세번째 이름 컬럼은 너비를 15에서 10으로 변경 */
 .row > li:nth-child(3) {width : 10rem;}
+

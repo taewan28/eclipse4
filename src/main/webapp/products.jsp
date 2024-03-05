@@ -8,7 +8,9 @@
 <head>
 <meta charset="UTF-8">
 <title>상품 관리</title>
-<link rel="stylesheet" href="assets/css/project.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css">
+<link rel="stylesheet" href="assets/css/customers.css">
+<link rel="stylesheet" href="assets/css/modal.css">
 </head>
 <body>
 	<h3>상품 관리</h3>
@@ -32,28 +34,63 @@
 		</form>
 	</div>
 	<hr>
-	<ul>
-		<!-- list 이름의 애트리뷰를 대상으로 합니다. : 애트리뷰트 작성은 서블릿에서 합니다. -->
-		<c:forEach items="${list }" var="vo" varStatus="status">
-			<li>
-				<ul class="row">
-					<li><c:out value="${status.index + 1 }"/></li>
-					<li><c:out value="${vo.pcode }"/></li>
-					<li><c:out value="${vo.category }"/></li>
-					<li><c:out value="${vo.pname }"/></li>
-					<li style="text-align: right;">
-						<fmt:formatNumber value="${vo.price}"></fmt:formatNumber>
-					</li>
-				</ul>
-			</li>	
-		</c:forEach>
+	<button id="new">새 상품 등록</button>
+	<ul id="list">
 	</ul>
+	<!-- The Modal -->
+      <div class="modal">
+            <div class="modal-dialog">
+               <div class="modal-content">
+                  <div class="modal-header">
+                     <h4 class="modal-title">새 상품 등록</h4>
+                  </div>
+                  <div class="modal-body">
+                        <ul>
+                           <li>
+                              <input type="text" id="pcode" placeholder="상품코드를 입력하세요.">
+                           </li>
+                           <li>
+                              <select id="category">
+                                 <option value="">카테고리 선택</option>
+                                 <c:forEach items="${cateList }" var="cate">
+                                    <option value="${cate.code}" >
+                                       <c:out value="${cate.name }" />(<c:out value="${cate.code }" />)
+                                    </option>
+                                 </c:forEach>
+                              </select>
+                           </li>
+                           <li>
+                              <input type="text" id="pname" placeholder="상품명을 입력하세요.">
+                           </li>
+                           <li>
+                              <input type="number" id="price" placeholder="가격을 입력하세요.">
+                           </li>
+                           <li>
+                              <button id="post">저장</button>&nbsp;&nbsp;&nbsp;
+                              <button id="clear">다시쓰기</button>
+                           </li>
+                        </ul>
+                  </div>
+                  <div class="modal-footer">
+                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                     <!--  <button type="button" class="btn btn-primary">Save changes</button>-->
+                  </div>
+               </div>
+            </div>
+         </div>
+	<!-- modal 끝 -->
+	<!-- 부트스트랩으로 js로 모달 사용하기 위함-->
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
 	<script type="text/javascript">
+	const modal = new bootstrap.Modal(document.querySelector('.modal'));
+	modal.show();
 	//js 파일에서는 서버 애트리뷰트를 가져올 수 없습니다.
 	//				jsp파일안에 있는 script 태그에서만 가능합니다.
 		const temp = '${cate}'
 	</script>
 	<!-- temp 변수값은 search.js 와 공유합니다. -->
+	<script type="text/javascript" src="assets/js/productApi_list.js"></script>
+	<script type="text/javascript" src="assets/js/productApi_post.js"></script>
 	<script type="text/javascript" src="assets/js/search.js"></script>
 </body>
 </html>

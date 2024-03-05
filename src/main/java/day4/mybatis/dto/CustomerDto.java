@@ -18,7 +18,6 @@ import lombok.ToString;
 
 public class CustomerDto {
 	private String customId;
-	private String custom_id;
     private String name;
     private String email;
     private int age;

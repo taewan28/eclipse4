@@ -2,6 +2,8 @@ package day4.mybatis.dto;
 
 import java.sql.Date;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+
 import lombok.AllArgsConstructor;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
@@ -23,6 +25,7 @@ public class BuyDto {
     private String customid;
     private String pcode;
     private int quantity;
+    @JsonFormat(pattern = "yyyy-mm-dd HH:mm", timezone = "Asia/Seoul")
     private Date buyDate;
     
 }

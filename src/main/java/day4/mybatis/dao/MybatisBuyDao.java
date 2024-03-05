@@ -8,6 +8,7 @@ import org.apache.ibatis.session.SqlSessionFactory;
 
 import day4.mybatis.dto.BuyDto;
 import day4.mybatis.dto.CustomerBuyDto;
+import day4.mybatis.dto.CustomerDto;
 import mybatis.SqlSessionBean;
 
 
@@ -62,6 +63,13 @@ public class MybatisBuyDao {
 	      sqlSession.close();
 	      return list;
 	   }
+   
+   public BuyDto getBuy(String customid)	{
+	   SqlSession sqlSession = sessionFactory.openSession();
+	   BuyDto dto = sqlSession.selectOne("tblbuy.getBuy",customid);
+	   sqlSession.close();
+	   return dto;
+   }
    
    
    
